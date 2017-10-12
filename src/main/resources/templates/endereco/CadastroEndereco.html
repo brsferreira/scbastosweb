@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'"
+	xmlns:scbastos="http://scbastos.com">
+<head>
+
+<title>Cadastro do Endereço</title>
+
+</head>
+
+<body>
+	
+<section layout:fragment="conteudo">
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>
+					Cadastro de Endereço do Imóvel.
+				</h1>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+
+			<form method="POST" th:object="${endereco}" class="form-vertical  js-form-loading"  th:action="@{/endereco/novo}">
+				
+				<th:block th:include="fragments/MensagemSucesso"></th:block> 		<!-- Mensagem de sucesso -->
+				<th:block th:include="fragments/MensagensErroValidacao"></th:block> <!-- Mensagem de validacao -->
+		
+				<div class="row">
+									
+					<div class="col-sm-6  form-group" scbastos:classforerror="logradouro">
+						<label for="logradouro" class="control-label">Logradouro</label>
+						<input id="logradouro" type="text" class="form-control" th:field="*{logradouro}"/>
+					</div>
+				</div>
+				
+				<div class="row">
+									
+					<div class="col-sm-6  form-group" scbastos:classforerror="complemento">
+						<label for="complemento" class="control-label">Complemento</label>
+						<input id="complemento" type="text" class="form-control" th:field="*{complemento}"/>
+					</div>
+				</div>
+	
+				<div class="row">
+				
+					<div class= "col-sm-3 form-group" scbastos:classforerror="numero">
+						<label for="numeroImovel" class="control-label">Número do imóvel</label>
+						<input id="numeroImovel" type="text" class="form-control js-inteiro " th:field="*{numero}"></input>
+					</div>
+					
+					<div class= "col-sm-3 form-group" scbastos:classforerror="cep">
+						<label for="cep" class="control-label">CEP</label>
+						<input id="cep" type="text" class="form-control jsmask-cep" th:field="*{cep}"></input>
+					</div>
+					
+				</div>	
+					
+				<div class="row">	
+					<div class= "col-sm-3 form-group">
+						<label for="bairro">Bairro</label>
+						<select id="bairro" class="form-control" th:field="*{bairro.id_bairro}">
+							<option th:each="bairros : ${bairros}" th:value="${bairros.id_bairro}" th:text="${bairros.nomeBairro}" class="form-control"></option>
+						</select>
+					</div>
+					
+					<div class= "col-sm-3 form-group">
+						<label for="municipio">Município</label>
+						<select id="municipio" class="form-control" th:field="*{bairro.municipio.id_municipio}">
+							<option th:each="municipios : ${municipios}" th:value="${municipios.id_municipio}" th:text="${municipios.NomeMunicipio}" class="form-control"></option>
+						</select>
+					</div>
+					
+				</div>
+				
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Próxima etapa</button>
+				</div>
+		
+			</form>
+		</div>
+		
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'"
+	xmlns:scbastos="http://scbastos.com">
+<head>
+
+<title>Cadastro de Proprietário</title>
+
+</head>
+
+<body>
+	
+<section layout:fragment="conteudo">
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-4">
+						<h1>Cadastro de Proprietário</h1>
+					</div>
+
+
+					<div class="col-sm-2">
+						<div class="aw-page-header-controls">
+							<a class="btn  btn-default" th:href="@{/proprietario}"> 
+								<i 	class="glyphicon  glyphicon-plus-sign"></i> 
+								<span class="hidden-xs  hidden-sm">Pesquisar Proprietário</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+
+
+			<form method="POST" th:object="${proprietario}" class="form-vertical  js-form-loading" th:action="@{/proprietario/novo}">
+			
+				<th:block th:include="fragments/MensagemSucesso"></th:block> 		
+				<th:block th:include="fragments/MensagensErroValidacao"></th:block> 
+		
+				<div class="row">
+									
+					<div class="col-sm-6  form-group" scbastos:classforerror="nome">
+						<label for="nome" class="control-label">Nome completo do proprietario</label>
+						<input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+					</div>
+				</div>
+	
+				<div class="row">
+				
+					<div class= "col-sm-2 form-group" scbastos:classforerror="cpf">
+						<label for="cpf_prop" class="control-label">cpf do proprietário</label>
+						<input id="cpf_prop" type="text" class="form-control jsmask-cpf" th:field="*{cpf}" autocomplete="off"></input>
+					</div>
+				</div>	
+					
+				<div class="row">	
+					<div class= "col-sm-2 form-group" scbastos:classforerror="telefone">
+						<label for="tel_1" class="control-label">Telefone</label>
+						<input id="tel_1" type="text" class="form-control js-phone-number" th:field="*{telefone}" autocomplete="off"></input>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class= "col-sm-6 form-group" scbastos:classforerror="email">
+						<label for="email" class="control-label">Email do proprietário</label>
+						<input id="text" type="text" class="form-control" th:field="*{email}"></input>
+					</div>
+				</div>
+					
+				
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Salvar Proprietário</button>
+				</div>
+		
+			</form>
+		</div>
+	</section>
+
+</body>
+</html>

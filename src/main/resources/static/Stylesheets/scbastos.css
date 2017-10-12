@@ -1,0 +1,229 @@
+
+
+/*
+######################
+# UTILIDADES
+######################
+*/
+.sc-glyphicon-large {
+	font-size: 18px;
+}
+
+.sc-required > .control-label:after {
+	content: "*";
+}
+
+
+hr.style10 {
+	
+	height: 4px;
+  	margin-left: 0px;
+ 	margin-bottom:-3px;
+	background-image: -webkit-linear-gradient(left, rgba(66,133,244,.8), rgba(66, 133, 244,.6), rgba(0,0,0,0));
+	/* border-top: 1px dotted #8c8b8b;
+	border-bottom: 1px dotted #fff;
+	border-color: 1px solid aqua; */
+	
+}
+
+/*
+######################
+# COMPONENTES
+######################
+*/
+
+/* Field Action */
+.sc-field-action {
+	display: flex;
+}
+
+.sc-field-action-icon {
+	margin: 6px 0 0 5px;
+}
+
+
+/*CUSTOMIZAÇÃO DE COMPONENTES*/
+
+
+.checkbox input[type="checkbox"]:checked + input + label::after {
+    font-family: 'FontAwesome';
+    content: "\f00c"; 
+}
+
+/* UPLOAD CSS CLASS ---------------------------------------------------------------------------- */
+
+.sc-upload {
+	padding: 15px;
+	
+	border: 1px dashed gray;
+	border-radius: 4px;
+	background: #fafafa;
+	
+	text-align: center;
+}
+
+.sc-upload-form-file {
+	display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1px;
+}
+
+.sc-upload-form-file > input[type=file] {
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+    
+    font-size: 500px;
+}
+
+
+/* TABLEAS DE PESQUISA DO PROPRIETARIO ################################ */
+
+.sc-tabela-simples {
+	margin-top: 15px;
+}
+
+.sc-tabela-simples table tr th {
+	border-bottom-width: 1px;
+}
+
+.sc-tabela-simples table tr td {
+    border-top: none;
+    border-bottom: 1px solid #e7eaec;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+/* .table-prop-col-foto {
+	min-width: 50px;
+	width: 50px
+} */
+
+/* .table-prop-col-sku {
+	width: 90px;
+	text-align: center;
+} */
+
+.table-prop-col-nome {
+	width: 150px;
+	color: #000080;
+	
+}
+
+.table-prop-col-cpf {
+	width: 10px !important;
+	color: #000080;
+}
+
+.table-prop-col-telefone {
+	width: 10px !important;
+	color: #000080;
+}
+
+.table-prop-col-email {
+	width: 100px;
+	color: #000080;
+	/*text-align: right;*/
+}
+
+.table-prop-col-data {
+	width: 15px;
+	color: #000080;
+	/*text-align: right;*/
+}
+
+.table-prop-col-acoes {
+	width: 80px;
+	color: #0080ff;
+}
+
+/*TABELA DE PESQUISA IMOVEIS #################################################################*/
+
+.table-imovel-col-tipo {
+	width: 50px;
+	color: #000080;
+	
+}
+
+.table-imovel-col-codigo {
+	width: 10px !important;
+	color: #000080;
+}
+
+.table-imovel-col-prop {
+	width: 170px !important;
+	color: #000080;
+}
+
+.table-imovel-col-bairro {
+	width: 100px;
+	color: #000080;
+	/*text-align: right;*/
+}
+
+.table-imovel-col-valor{
+	width: 50px;
+	color: #000080;
+}
+
+.table-imovel-col-status{
+	width: 50px;
+	color: #000080;
+}
+
+.table-imovel-col-data {
+	width: 40px;
+	color: #000080;
+	/*text-align: right;*/
+}
+
+.table-imovel-col-acoes {
+	width: 80px;
+	color: #0080ff;
+}
+
+
+/* MUDANCA NA COR DO BOTAO DE PAGINACAO ######################################################*/
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    background-color: #087510 !Important;
+    border-color: #1e94d2;
+    cursor: default;
+}
+
+/* SOBRE-ESCREVENDO ALGUMAS CORES DO LAYOUT PADRAO DO BOOTSTRAP*/
+
+
+/* .well {
+  	border-color: #ddd !important;
+  	border-color: rgba(46, 51, 245, 0.48) !important;
+  	border:1px solid #2e33f5;
+  	width: 1000px;
+  	
+} */
+
+
+
+.form-control{
+	
+	border: 1px solid rgba(0, 0, 0, 0.28) !important;
+	/* background-color: rgba(71, 216, 115, 0.05) !important; */
+}
+
+.input-group-addon{
+	
+	color: #000 !important;
+	border:1px solid rgba(0, 0, 0, 0.28) !important;
+	
+} 
+
+
+

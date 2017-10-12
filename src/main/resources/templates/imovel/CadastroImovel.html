@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'"
+	xmlns:scbastos="http://scbastos.com">
+
+<head>
+
+<title>Cadastro do Imóvel</title>
+
+<link rel="stylesheet" th:href="@{/Stylesheets/vendors/upload.min.css}" />
+
+</head>
+
+<body>
+
+	<section layout:fragment="conteudo">
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Cadastro do Imóvel</h1>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+
+			<form method="POST" th:object="${imovel}" class="form-vertical  js-form-loading" th:action="@{/imovel/novo}">
+
+				<th:block th:include="fragments/MensagemSucesso"></th:block>
+				<th:block th:include="fragments/MensagensErroValidacao"></th:block>
+
+<!-- PROPRIETARIO  -------------------------------------------------------------------------------------------------------------------------------->
+
+<h4 style="color: blue">Informações do proprietário</h4>
+
+ <div class="well-small">
+	
+	<div class="row"><!-- ------------------------------------------------------------------------------------------------->
+	
+		<div class="col-sm-4  form-group"
+			scbastos:classforerror="proprietario.nome">
+			<label for="nome" class="control-label">Nome completo do proprietario</label> 
+			<input id="nome" type="text" class="form-control" th:field="*{proprietario.nome}"/>
+		</div>
+
+	</div>
+
+	<div class="row"><!-- ------------------------------------------------------------------------------------------------->
+	
+		<div class="col-sm-2 form-group" scbastos:classforerror="proprietario.cpf">
+			<label for="cpf_prop" class="control-label">cpf do proprietário</label> 
+			<input id="cpf_prop" type="text" class="form-control jsmask-cpf" th:field="*{proprietario.cpf}" autocomplete="off"></input>
+		</div>
+
+		<div class="col-sm-2 form-group" scbastos:classforerror="proprietario.telefone">
+			<label for="tel_1" class="control-label">Telefone</label> 
+			<input id="tel_1" type="text" class="form-control js-phone-number" th:field="*{proprietario.telefone}" autocomplete="off"/>
+		</div>
+		
+	</div>
+		
+	<div class="row"><!-- ------------------------------------------------------------------------------------------------->
+		
+		 <div class="col-sm-4 form-group" scbastos:classforerror="proprietario.email">
+			<label for="email" class="control-label">Email do proprietário</label> 
+			<input id="text" type="text" class="form-control" th:field="*{proprietario.email}"/>
+		</div>
+	</div>
+</div>
+
+<!-- ENDERECO  ---------------------------------------------------------------------------------------------------------------------------------------------->
+
+<hr class="style10"><h4 style="color: blue">Informações do Endereço</h4>
+
+<div class="well-small">
+
+	<div class="row"><!-- ------------------------------------------------------------------------------------------------->
+
+		<div class="col-sm-4  form-group" scbastos:classforerror="endereco.logradouro">
+			<label for="logradouro" class="control-label">Logradouro</label>
+			<input id="logradouro" type="text" class="form-control" th:field="*{endereco.logradouro}" />
+		</div>
+		
+	</div>
+
+	<div class="row"><!-- ------------------------------------------------------------------------------------------------->
+
+		<div class="col-sm-2 form-group" scbastos:classforerror="endereco.numero">
+			<label for="numeroImovel" class="control-label">Número do imóvel</label>
+			<input id="numeroImovel" type="text" class="form-control js-inteiro js-numeroImovel" th:field="*{endereco.numero}"></input>
+		</div>
+						
+		<div class="col-sm-2  form-group" scbastos:classforerror="endereco.complemento">
+			<label for="complemento" class="control-label">Complemento</label>
+			<input id="complemento" type="text" class="form-control" th:field="*{endereco.complemento}" />
+		</div>
+						
+	</div>	
+						
+	<div class="row"><!-- ------------------------------------------------------------------------------------------------->
+					
+		<div class="col-sm-1 form-group" scbastos:classforerror="endereco.cep">
+			<label for="cep" class="control-label">CEP</label> 
+			<input id="cep" type="text" class="form-control jsmask-cep" th:field="*{endereco.cep}"></input>
+		</div>
+
+		<div class="col-sm-2 form-group">
+			<label for="bairro">Bairro</label> 
+			<select id="bairro" class="form-control" th:field="*{endereco.bairro.id_bairro}">
+				<option th:each="bairros : ${bairros}" th:value="${bairros.id_bairro}" th:text="${bairros.nomeBairro}" 	class="form-control"/>
+			</select>
+		</div>
+
+		<div class="col-sm-2 form-group">
+			<label for="municipio">Município</label> 
+			<select id="municipio" class="form-control" th:field="*{endereco.bairro.municipio.id_municipio}">
+				<option th:each="municipios : ${municipios}" th:value="${municipios.id_municipio}" th:text="${municipios.NomeMunicipio}" class="form-control"/>
+			</select>
+		</div>
+		
+	</div>
+
+</div>
+				
+<!-- IMOVEL  ------------------------------------------------------------------------------------------------------------------------------------->
+
+<hr class="style10"><h4 style="color: blue">Dados do imóvel</h4>
+
+<div class="row"><!-- ------------------------------------------------------------------------------------------------->
+
+	<div class="col-sm-4" scbastos:classforerror="usuario">
+		<label for="nomecorretor" class="control-label">Nome do	corretor responsável</label>
+		<select id="nomecorretor" class="form-control" th:field="*{corretor}">
+			<option th:each="usuario : ${usuario}" th:value="${usuario.nome}" th:text="${usuario.getNome()}" class="form-control"/>
+		</select>
+	</div>
+
+	<div class="col-sm-2  form-group" scbastos:classforerror="codigosc">
+		<label for="codigosc" class="control-label">Código SC</label>
+		<div class="input-group">
+			<div class="input-group-addon">sc</div>
+			<input id="codigosc" type="text" class="form-control js-inteiro js-codigosc" th:field="*{codigosc}"/>
+		</div>
+	</div>
+	
+</div>
+						
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->
+						
+	<div class="col-sm-2  form-group" scbastos:classforerror="tipoImovel">
+		<label for="tipo_imovel" class="control-label">Tipo do imóvel</label> 
+		<select id="tipo_imovel" class="form-control" th:field="*{tipoImovel}">
+			<option th:each="tipoImovel : ${tipoImoveis}" th:value="${tipoImovel}" th:text="${tipoImovel.descricao}"/>
+		</select>
+	</div>
+	
+	<div class="col-sm-2  form-group" scbastos:classforerror="destinacao">
+		<label for="destinacao" class="destinacao">Destinação</label> 
+		<select id="destinacao" class="form-control" th:field="*{destinacao}">
+			<option th:each="destinacao : ${destinacoes}" th:value="${destinacao}" th:text="${destinacao.getEnum_destinacao()}"/>
+		</select>
+	</div>
+	
+	<div class="col-sm-2  form-group" scbastos:classforerror="situacao">
+		<label for="situacao" class="control-label">Situação</label> 
+		<select	id="situacao" class="form-control" th:field="*{situacao}">
+			<option th:each="situacao : ${situacoes}" th:value="${situacao}" th:text="${situacao.descricao}"/>
+		</select>
+	</div>
+	
+</div>
+					
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->
+
+	<div class="col-sm-2  form-group" scbastos:classforerror="classificacao">
+		<label for="classificacao" class="control-label">Classificacao</label>
+		<select id="classificacao" class="form-control" th:field="*{classificacao}">
+			<option th:each="classificacao : ${classificacoes}" th:value="${classificacao}"	th:text="${classificacao.enum_classificacao}"/>
+		</select>
+	</div>
+	
+	<div class="col-sm-2 form-group" scbastos:classforerror="dataCaptacao">
+		<label for="data_captacao control-label">Data de Captação*</label> 
+		<input id="data_captacao" type="text" class="form-control js-date" th:field="*{dataCaptacao}" autocomplete="off">
+	</div>
+	
+	<div class="col-sm-2  form-group" scbastos:classforerror="conservacao">
+		<label for="conservacao" class="control-label">Conservação</label>
+		<select id="conservacao" class="form-control" th:field="*{conservacao}">
+			<option th:each="conservacao : ${conservacao}" th:value="${conservacao}" th:text="${conservacao.getEnum_conservacao()}"/>
+		</select>
+	</div>
+</div>
+
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->
+
+	<div class="col-sm-2 form-group" scbastos:classforerror="matricula">
+		<label for="matricula" class="control-label">Matrícula</label> 
+		<input id="matricula" type="text" class=" control-label form-control js-inteiro js-matriculaImovel" th:field="*{matricula}">
+	</div>
+
+	<div class="col-sm-2 form-group" scbastos:classforerror="inscricaoImobiliaria">
+		<label for="inscricao" class="control-label">Inscrição imobiliária</label> 
+		<input id="inscricao" type="text" class=" control-label form-control js-inteiro js-inscImovel" th:field="*{inscricaoImobiliaria}"/>
+	</div>
+
+	<div class="col-sm-2 form-group"
+		scbastos:classforerror="idadeImovel">
+		<label for="idade_imovel" class="control-label">idade do imóvel</label>
+		<div class="input-group">
+			<input id="idade_imovel" type="text" class="form-control js-inteiro js-idadeImovel" th:field="*{idadeImovel}"/>
+			<div class="input-group-addon">anos</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->
+
+	<div class="col-sm-2 form-group" scbastos:classforerror="garagem">
+		<label for="garagem" class="control-label">Garagem</label>
+		<div class="input-group">
+			<input id="garagem" type="text" class="form-control js-inteiro js-garagem" th:field="*{garagem}"/>
+			<div class="input-group-addon">vagas</div>
+		</div>
+	</div>
+	
+	<div class="col-sm-2 form-group" scbastos:classforerror="areaTotal">
+		<label for="area_total" class="control-label">Área total</label>
+		<div class="input-group">
+			<input id="area_total" type="text" class="form-control js-decimal js-areaTotal" th:field="*{areaTotal}"/>
+			<div class="input-group-addon">M²</div>
+		</div>
+	</div>
+	
+</div><br>
+
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->
+
+	<div class=" form- group col-sm-2" scbastos:classforerror="status">
+		<label for="status" class="control-label">Status do	Imóvel</label>
+		<div>
+			<th:block th:each="status : ${statusImovel}">
+				<div class="radio radio-inline">
+					<input th:id="|id_${status}|" type="radio" th:value="${status}" th:field="*{status}" />
+					<label th:for="|id_${status}|" th:text="${status.descricao}">Ativo</label>
+				</div>
+			</th:block>
+		</div>
+	</div>
+						
+
+	<div class="col-sm-2" scbastos:classforerror="exclusividade_imovel">
+		<label for="status" class="control-label">Exclusividade do Imóvel</label>
+		<div>
+			<th:block th:each="exclusividade : ${exclusividadeImovel}">
+				<div class="radio radio-inline">
+					<input th:id="|id_${exclusividade}|" type="radio" th:value="${exclusividade}" th:field="*{exclusividade_imovel}" />
+					<label th:for="|id_${exclusividade}|" th:text="${exclusividade.getImovel_exclusividade()}">Exclusividade</label>
+				</div>
+			</th:block>
+		</div>
+	</div>
+	
+</div><br>
+	
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->
+	
+	<div class="col-lg-6  col-sm-6" scbastos:classforerror="descricao">
+		<label for="descricao" class="control-label">Descrição do Imóvel</label> 
+		<input id="descricao" type="text" class="form-control" th:field="*{descricao}"/>
+	</div>
+	
+</div><br>
+
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->
+
+	<div class="form-group  col-sm-6">
+		<input type="hidden" th:field="*{foto}"> 
+		<input type="hidden" th:field="*{contentType}">
+		<label class="control-label">Foto do imóvel</label>
+		<div class="js-container-foto-imovel" th:attr="data-url-fotos=@{/fotos}">
+			<div id="upload-drop" class="sc-upload">
+				<i class="glyphicon  glyphicon-cloud-upload"></i> <span>Arraste a foto aqui ou </span> 
+				<a class="sc-upload-form-file">selecione 
+				<input id="upload-select" type="file" accept=".jpg,.jpeg,.png"/></a>
+			</div>
+		</div>
+	</div>
+	<br>
+</div>
+
+<!-- VALORES -------------------------------------------------------------------------------------------------------------------------------------------->
+
+<hr class="style10"><h4 style="color: blue">Valores do imóvel</h4>
+
+
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->
+
+	<div class="col-sm-4 form-group" th:classappend="${#fields.hasErrors('valor.OrgFinanceira')} ? has-error">
+		<label for="organizacaoFinanceira" class="control-label">Organização Financeira</label> <input id="organizacaoFinanceira" 
+			type="text" class="form-control" th:field="*{valor.OrgFinanceira}"/>
+	</div>
+</div>
+
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->	
+
+	<div class="col-sm-2 form-group" th:classappend="${#fields.hasErrors('valor.valorImovel')} ? has-error">
+		<label for="valorimovel" class="control-label">Valor do	imóvel</label>
+		<div class="input-group">
+			<div class="input-group-addon">R$</div>
+			<input id="valodescobririmovel" type="text"	class="form-control js-decimal js-valorImovel" th:field="*{valor.valorImovel}"/>
+		</div>
+	</div>
+	
+	<div class="col-sm-2 form-group"th:classappend="${#fields.hasErrors('valor.prazoFinanciamento')} ? has-error">
+		<label for="prazo" class="control-label">Prazo Financiamento</label>
+		<div class="input-group">
+			<input id="prazo" type="text" class="form-control js-inteiro js-prazo" th:field="*{valor.prazoFinanciamento}"/>
+			<div class="input-group-addon">anos</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->	
+					
+	<div class="col-sm-2 form-group" th:classappend="${#fields.hasErrors('valor.sinal')} ? has-error">
+		<label for="sinal" class="control-label">Sinal</label>
+		<div class="input-group">
+			<div class="input-group-addon">R$</div>
+			<input id="sinal" type="text" class="form-control js-decimal js-valorImovel" th:field="*{valor.sinal}"/>
+		</div>
+	</div>
+	
+	<div class="col-lg-2  col-sm-6">
+		<label for="quitado" class="control-label">Imóvel Quitado?</label> 
+		<select id="quitado" class="form-control" th:field="*{valor.quitado}">
+			<option value="" selected="selected">Selecione</option>
+			<option	th:each="segmento : ${T(com.scbastos.model.Enumerators.EnumImovelQuitado).values()}"
+				th:value="${segmento}" th:text="${segmento.imovel_quitacao}"></option>
+		</select>
+	</div>
+
+	<!-- <div class="col-sm-2 form-group">VERIFICAR !!!!  IMPLEMENTACAO PENDENTE
+		<label for="saldoDevedor">Saldo devedor</label>
+		<div class="input-group">
+			<div class="input-group-addon">R$</div>
+			<input id="saldoDevedor" class="form-control js-decimal" th:field="*{valor.saldoDevedor}" disabled="disabled"></input>
+		</div>
+	</div> -->
+
+
+	<!-- ESSE RADIO BUTTON ESTÁ APRESENTANDO PROBLEMA NO THYMELEAF -->
+	<!-- <div class="col-lg-2  col-sm-6" th:classappend="${#fields.hasErrors('valor.quitado')} ? has-error">
+		<label for="quitado" class="control-label">Imóvel Quitado?</label>
+		<div>
+			<th:block th:each="quitado : ${T(com.scbastos.model.Enumerators.EnumImovelQuitado).values()}">
+				<div class="radio  radio-inline">
+					<input th:id="|id_${quitado}|" type="radio" th:value="${quitado}" th:field="*{quitado}" />
+					<label th:for="|id_${quitado}|" th:text="${quitado.imovel_quitacao}">Ativo</label> 
+				</div>
+			</th:block>
+		</div>
+	</div> -->
+</div>
+
+				
+				
+<!-- DEPENDENCIAS ------------------------------------------------------------------------------------------------->
+				
+			<!-- div>
+				<div style="width: 850px">
+				<table class="table  table-hover">
+					<thead>
+						<tr>
+							<th class="table-imovel-col-tipo">Dependência</th>
+							<th class="table-imovel-col-tipo">Quantidade</th>
+							<th class="table-imovel-col-bairro">Tipo do piso</th>
+							<th class="table-imovel-col-codigo">Comprimento</th>
+							<th class="table-imovel-col-prop">largura</th>
+							<th class="table-imovel-col-bairro">Altura</th>
+							<th class="table-imovel-col-bairro">Área Total</th>
+							
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr>
+							<td width="200px">
+								<select id="nomeDependencia" class="form-control" th:field="*{dependencia[0].nomeDependencia}">
+									<option th:each="dependencia : ${dependencias}" th:value="${dependencia}" 
+											th:text="${dependencia.descricao}" class="form-control">
+									</option>
+								</select>
+							</td>
+							
+							<td><input id="dependencia" type="text" class="form-control" th:field="*{dependencia[0].area}"></input></td>
+							<td><input id="dependencia" type="text" class="form-control" th:field="*{dependencia[0].tipoPiso}"></input></td>
+							<td><input id="dependencia" type="text" class="form-control" th:field="*{dependencia[0].comprimento}"></input></td>
+							<td><input id="dependencia" type="text" class="form-control" th:field="*{dependencia[0].largura}"></input></td>
+							<td><input id="dependencia" type="text" class="form-control" th:field="*{dependencia[0].altura}"></input></td>
+							<td><input id="dependencia" type="text" class="form-control" th:field="*{dependencia[0].area}"></input></td>
+						</tr>
+					</tbody>
+				</table><input id="dependencia" type="text" class="form-control" th:field="*{dependencia[0].nomeDependencia}"></input>
+			</div>
+		</div>	 --><br>
+		
+<div class="row"><!-- -------------------------------------------------------------------------------------------------->	
+		
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Salvar</button>
+				</div>
+</div>
+
+			</form>
+		</div>
+
+		<th:block th:replace="handlebars/fotoImovel"></th:block>
+
+	</section>
+
+	<th:block layout:fragment="javascript-extra">
+
+		<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+		<script th:src="@{/javascripts/imovel.upload-foto.js}"></script>
+
+	</th:block>
+
+</body>
+</html>

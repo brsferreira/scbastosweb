@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	
+	
+<body>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEndereco" tabindex="-1" role="dialog" th:fragment="modalEndereco">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+        	<span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Cadastrar endereço do imóvel</h4>
+      </div>
+      <div class="modal-body">
+      
+      	<form class="form-vertical">
+      	
+      	<div class="row">
+									
+					<div class="col-sm-10  form-group">
+						<label for="nome">Logradouro</label>
+						<input id="nome" type="text" class="form-control"/>
+					</div>
+				</div>
+	
+				<div class="row">
+				
+					<div class= "col-sm-4 form-group">
+						<label for="descricao">Número do imóvel</label>
+						<input id="cpf_prop" type="text" class="form-control"></input>
+					</div>
+					
+					<div class= "col-sm-4 form-group">
+						<label for="descricao">CEP</label>
+						<input id="cpf_prop" type="text" class="form-control"></input>
+					</div>
+					
+				</div>	
+					
+				<div class="row">	
+					<div class= "col-sm-4 form-group">
+						<label for="descricao">Bairro</label>
+						<input id="tel_1" type="text" class="form-control"></input>
+					</div>
+					
+					<div class= "col-sm-4 form-group">
+						<label for="descricao">Município</label>
+						<input id="tel_2" type="text" class="form-control"></input>
+					</div>
+					
+				</div>
+      	
+      	</form>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>	
+	
+	
+</html>

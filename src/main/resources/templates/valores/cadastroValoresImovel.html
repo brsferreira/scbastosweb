@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'">
+<head>
+
+	<title>valores do imóvel</title>
+
+</head>
+
+<body>
+	
+	<section layout:fragment="conteudo">
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>
+					Cadastro de valores do Imóvel.
+				</h1>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+
+			<form method="POST" th:object="${valor}" class="form-vertical  js-form-loading" th:action="@{/valores/novo}"> 
+			
+				<th:block th:include="fragments/MensagemSucesso"></th:block> 		<!-- Mensagem de sucesso -->
+				<th:block th:include="fragments/MensagensErroValidacao"></th:block> <!-- Mensagem de validacao -->
+			
+				<div  class="well well-small">
+				
+					<div class="row">
+					
+						<div class= "col-sm-6 form-group" th:classappend="${#fields.hasErrors('OrgFinanceira')} ? has-error">
+							<label for="organizacaoFinanceira" class="control-label">Organização Financeira</label>
+							<input id="organizacaoFinanceira" type="text" class="form-control" th:field="*{OrgFinanceira}"></input>
+						</div>
+					
+					</div>
+				
+					<div class="row">
+					
+						<div class= "col-sm-2 form-group" th:classappend="${#fields.hasErrors('valorImovel')} ? has-error">
+							<label for="valorimovel" class="control-label">Valor do imóvel</label>
+								<div class="input-group">
+									<div class="input-group-addon">R$</div>
+									<input id="valodescobririmovel" type="text" class="form-control js-decimal" th:field="*{valorImovel}"></input>
+								</div>
+						</div>
+						
+						<div class= "col-sm-2 form-group" th:classappend="${#fields.hasErrors('sinal')} ? has-error">
+							<label for="sinal" class="control-label">Sinal</label>
+								<div class="input-group">
+									<div class="input-group-addon">R$</div>
+									<input id="sinal" type="text" class="form-control js-decimal" th:field="*{sinal}"></input>
+								</div>
+						</div>
+						
+						<div class= "col-sm-2 form-group" th:classappend="${#fields.hasErrors('prazoFinanciamento')} ? has-error">
+							<label for="prazo" class="control-label">Prazo Financiamento</label>
+								<div class="input-group">
+									<input id="prazo" type="text" class="form-control js-inteiro" th:field="*{prazoFinanciamento}"></input>
+									<div class="input-group-addon">anos</div>
+								</div>
+						</div>
+						
+					</div>
+					
+					<div class="row">
+					
+						<div class= "col-sm-2 form-group"><!-- VERIFICAR !!!!  -->
+							<label for="saldoDevedor">Saldo devedor</label>
+								<div class="input-group">
+									<div class="input-group-addon">R$</div>
+									<input id="saldoDevedor" class="form-control js-decimal" th:field="*{saldoDevedor}" readonly="readonly"></input>
+								</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						
+						<div class="col-lg-2  col-sm-6" th:classappend="${#fields.hasErrors('quitado')} ? has-error">
+							<label for="quitado" class="control-label">Imóvel Quitado?</label>
+							<div>
+								<th:block th:each="quitado : ${EnumImovelQuitado}">
+									<div class="radio  radio-inline">
+										<input th:id="|id_${quitado}|" type="radio" th:value="${quitado}" th:field="*{quitado}" />
+										<label th:for="|id_${quitado}|" th:text="${quitado.imovel_quitacao}">Ativo</label> 
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+						
+					</div>
+				
+				<!-- BOTAO SALVAR -->
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Próxima etapa (cadastrar imóvel)</button>
+				</div>
+				
+			</form>
+		</div>
+		
+	</section>
+</body>
+</html>

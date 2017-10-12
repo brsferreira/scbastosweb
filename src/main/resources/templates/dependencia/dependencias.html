@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="'layout/LayoutPadrao'"
+	xmlns:scbastos="http://scbastos.com">
+
+<head>
+	<title>Dependencias</title>
+	<link rel="stylesheet" th:href="@{/Stylesheets/vendors/upload.min.css}" />
+</head>
+
+<body>
+
+
+	<section layout:fragment="conteudo">
+
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Cadastro de dependencias</h1>
+			</div>
+		</div>
+
+		<div class="container-fluid"></div>
+		
+		<form method="GET" class="form-vertical  js-form-loading" th:object="${imovel}">
+		
+			<div class="table-responsive  bw-tabela-simples sc-tabela-simples">
+				<table class="table  table-hover">
+					<thead>
+						<tr>
+							<th class="table-imovel-col-tipo">Dependências</th>
+							<th class="table-imovel-col-tipo">Quantidade</th>
+							<th class="table-imovel-col-bairro">Tipo do piso</th>
+							<th class="table-imovel-col-codigo">Comprimento</th>
+							<th class="table-imovel-col-prop">largura</th>
+							<th class="table-imovel-col-bairro">Altura</th>
+							<th class="table-imovel-col-bairro">Área Total</th>
+							
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr th:each="dependencias : ${dependencias}">
+							<td th:text="${dependencias.nomeDependencia}"></td>
+							<td>
+								<input type="text" class="form-control" id="qtd" th:each="dependencias : ${dependencias}" autofocus="autofocus"/>
+							</td>
+						
+						</tr>
+					</tbody>
+				</table>
+			
+			
+			</div>
+		
+		
+		
+		
+		</form>	
+		
+	</section>
+	
+		<th:block layout:fragment="javascript-extra">
+
+		<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
+		<script th:src="@{/javascripts/imovel.upload-foto.js}"></script>
+
+	</th:block>
+		
+</body>
+
+</html>
