@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,7 +24,7 @@ import com.scbastos.repository.Proprietarios;
 import com.scbastos.repository.filter.ProprietarioFilter;
 import com.scbastos.service.CadastroProprietarioService;
 
-
+@SessionScope
 @Controller
 @RequestMapping("/proprietario")
 public class ProprietarioController {
@@ -55,15 +56,16 @@ public class ProprietarioController {
 			try {
 				cadastroProprietarioService.salvarProprietario(proprietario);
 			} catch (CpfExcepetion e) {
-				result.rejectValue("cpf",e.getMessage(), e.getMessage());
-				return novo(proprietario);
-			}catch (EmailExcepetion e) {
-				result.rejectValue("email",e.getMessage(), e.getMessage());
-				return novo(proprietario);
-			}
-			catch (TelefoneException e) {
-				result.rejectValue("telefone",e.getMessage(), e.getMessage());
-				return novo(proprietario);
+					result.rejectValue("cpf",e.getMessage(), e.getMessage());
+					return novo(proprietario);
+				
+			} catch (EmailExcepetion e) {
+					result.rejectValue("email",e.getMessage(), e.getMessage());
+					return novo(proprietario);
+					
+			} catch (TelefoneException e) {
+					result.rejectValue("telefone",e.getMessage(), e.getMessage());
+					return novo(proprietario);
 			}
 			
 		atributes.addFlashAttribute("mensagem", "Proprietário cadastrado com sucesso");

@@ -8,5 +8,7 @@ import com.scbastos.repository.filter.ImovelFilter;
 public interface ImoveisQueries {
 	
 	public List<Imovel> filtrar(ImovelFilter filtro);
-
+	
+	//public List<Imovel> cpfs(Imovel imovel);  VERIFICAR!
+	
 }

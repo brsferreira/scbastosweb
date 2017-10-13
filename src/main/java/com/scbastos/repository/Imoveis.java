@@ -13,6 +13,6 @@ public interface Imoveis extends JpaRepository<Imovel, Long>, ImoveisQueries {
 	
 	public Optional<Imovel> findByCodigosc(Long codigosc);
 	public Optional<Imovel> findByMatricula(String matricula);
-	public Optional<Imovel> findByInscricaoImobiliaria(String inscricaoImobiliaria);
-	
+	public Optional<Imovel> findByInscricaoImobiliaria(String inscricaoImobiliaria);	
+		
 }

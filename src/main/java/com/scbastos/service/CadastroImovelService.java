@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.scbastos.exceptions.ImovelCodigoSCExpetion;
 import com.scbastos.exceptions.InscricaoException;
 import com.scbastos.exceptions.MatriculaException;
@@ -36,7 +37,13 @@ public class CadastroImovelService {
 			throw new InscricaoException("Detectamos um imóvel com a mesma Inscrição imobiliária.");
 		}
 		
+/*		List<Imovel> PropCpf = imoveis.cpfs(imovel);
+		if(!PropCpf.isEmpty()){
+			throw new CpfExcepetion("O cpf informado já existe na base de dados.");
+		}*/
+		
 		imoveis.save(imovel);
 
 	}
+
 }

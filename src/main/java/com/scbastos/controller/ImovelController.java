@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.scbastos.exceptions.CpfExcepetion;
 import com.scbastos.exceptions.ImovelCodigoSCExpetion;
 import com.scbastos.exceptions.InscricaoException;
 import com.scbastos.exceptions.MatriculaException;
@@ -42,7 +44,7 @@ import com.scbastos.repository.filter.ImovelFilter;
 import com.scbastos.security.UsuarioSistema;
 import com.scbastos.service.CadastroImovelService;
 
-
+@SessionScope
 @Controller
 @RequestMapping("/imovel")
 public class ImovelController {
@@ -81,12 +83,10 @@ public class ImovelController {
 		mv.addObject("situacoes", EnumSituacao.values());
 		mv.addObject("statusImovel",EnumStatusImovel.values());
 		mv.addObject("exclusividadeImovel",EnumExclusividadeImovel.values());
-		mv.addObject("dependencias",EnumDependencias.values());
-		
-		
 		mv.addObject("usuario",usuariosRepository.CorretorAtivo());
 		mv.addObject("bairros",bairrosRepository.findAll());
 		mv.addObject("municipios",municipiosRepository.findAll());
+		mv.addObject("dependencias",EnumDependencias.values());
 		mv.addObject("dependencia",Dependencia.class);
 		
 		return mv;
@@ -121,7 +121,13 @@ public class ImovelController {
 	} catch (InscricaoException i) {
 			result.rejectValue("inscricaoImobiliaria",i.getMessage(), i.getMessage());
 			return novo(imovel);
+			
+	} catch (CpfExcepetion e) {
+			result.rejectValue("cpf",e.getMessage(), e.getMessage());
+			return novo(imovel);
+	
 	}
+			
 		
 		atributes.addFlashAttribute("mensagem", "Imovel cadastrado com sucesso");
 		return new ModelAndView("redirect:/imovel/novo");

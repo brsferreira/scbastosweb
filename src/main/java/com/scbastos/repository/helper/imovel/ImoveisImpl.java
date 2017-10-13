@@ -1,7 +1,6 @@
 package com.scbastos.repository.helper.imovel;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.hibernate.Criteria;
@@ -51,4 +50,15 @@ public class ImoveisImpl implements ImoveisQueries{
 		
 	}//END filtrar
 
+
+/*	@Override
+	public List<Imovel> cpfs(Imovel imovel) {
+		return manager.createQuery("SELECT p.cpf FROM imovel i INNER JOIN i.proprietario p WHERE i = :imovel", Imovel.class)
+				.setParameter("imovel", imovel)
+				.getResultList();
+	}*/
+
 }//END CLASS
+
+
+

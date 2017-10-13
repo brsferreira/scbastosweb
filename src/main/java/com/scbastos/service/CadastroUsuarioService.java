@@ -42,9 +42,7 @@ public class CadastroUsuarioService {
 		Optional<Usuario> usuarioTelefone = usuarios.findByTelefone(usuario.getTelefone());
 		if(usuarioTelefone.isPresent()){
 			 throw new TelefoneException("O Telefone celular informado já existe na base de dados.");
-		 }
-		
-		
+		}
 		
 		if (usuario.isNovo() && StringUtils.isEmpty(usuario.getSenha())) {
 			throw new SenhaObrigatoriaUsuarioException("Senha é obrigatória para novo usuário");
@@ -53,7 +51,6 @@ public class CadastroUsuarioService {
 		if(usuario.isNovo()){
 			usuario.setSenha(this.passwordEncoder.encode(usuario.getSenha()));
 			usuario.setConfirmaSenha(usuario.getSenha());
-			
 		}
 		
 		

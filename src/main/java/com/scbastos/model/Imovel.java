@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -24,7 +23,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.context.annotation.SessionScope;
 
 import com.scbastos.model.Enumerators.EnumClassificacao;
 import com.scbastos.model.Enumerators.EnumConservacao;
@@ -34,6 +37,7 @@ import com.scbastos.model.Enumerators.EnumSituacao;
 import com.scbastos.model.Enumerators.EnumStatusImovel;
 import com.scbastos.model.Enumerators.EnumTipoImovel;
 
+@SessionScope
 @Entity
 @Table(name="imovel")
 public class Imovel implements Serializable{
@@ -54,12 +58,17 @@ public class Imovel implements Serializable{
 	@Max(value = 100, message = "O número máximo de garagens não deve exceder 100")
 	private int garagem;
 	
+	@Max(value = 1000, message ="A idade do imóvel não deve exceder 1000 anos")
 	@Column(name="idade_imovel")
 	private int idadeImovel;
 	
+	@Pattern(regexp="\\d+", message ="Apenas números são permitidos para matrícula do imóvel")
+	@Size(max=15, message ="A matrícula do imóvel não deve exceder 15 digitos")
 	@NotBlank(message="Por favor, informe a matricula do imóvel.")
 	private String matricula;
 	
+	@Pattern(regexp="\\d+", message ="Apenas números são permitidos para inscrição imobiliária")
+	@Size(max=15, message ="A inscrição do imóvel não deve exceder 15 digitos")
 	@NotBlank(message="Por favor, informe a inscrição imobiliária do imóvel.")
 	@Column(name="insc_imob")
 	private String inscricaoImobiliaria;
@@ -76,6 +85,7 @@ public class Imovel implements Serializable{
 	@Column(name="data_cadastro")
 	private LocalDateTime dataCadastro = LocalDateTime.now();
 	
+	//@DecimalMax(value = "1.000.000,00", message ="O valor máximo é 1.000.000,00m²")
 	@Column(name="area_total")
 	private BigDecimal areaTotal;
 	
