@@ -44,49 +44,50 @@
 		
 				<div class="row">
 									
-					<div class="col-sm-6  form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+					<div class="col-sm-4  form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
 						<label for="nome" class="control-label">Nome Completo do usuário*</label>
-						<input id="nome" type="text" class="form-control" th:field="*{nome}"/>
+						<input id="nome" type="text" class="form-control negritoBlue" th:field="*{nome}"/>
 					</div>
 				</div>
 				
 				<div class="row">	
-					<div class= "col-sm-3 form-group" th:classappend="${#fields.hasErrors('telefone')} ? has-error">
+				
+					<div class= "col-sm-2 form-group" th:classappend="${#fields.hasErrors('cpf')} ? has-error">
+						<label for="cpf_prop" class="control-label">cpf do usuário*</label>
+						<input id="cpf_prop" type="text" class="form-control negritoBlue jsmask-cpf" th:field="*{cpf}" autocomplete="off"></input>
+					</div>
+				
+					<div class= "col-sm-2 form-group" th:classappend="${#fields.hasErrors('telefone')} ? has-error">
 						<label for="telefone" class="control-label">Telefone*</label>
-						<input id="telefone" type="text" class="form-control js-phone-number" th:field="*{telefone}"></input>
+						<input id="telefone" type="text" class="form-control negritoBlue js-phone-number" th:field="*{telefone}"></input>
 					</div>
 				</div>
 	
 				<div class="row">
-				
-					<div class= "col-sm-3 form-group" th:classappend="${#fields.hasErrors('cpf')} ? has-error">
-						<label for="cpf_prop" class="control-label">cpf do usuário*</label>
-						<input id="cpf_prop" type="text" class="form-control jsmask-cpf" th:field="*{cpf}" autocomplete="off"></input>
-					</div>
 					
-					<div class="form-group  col-sm-3" th:classappend="${#fields.hasErrors('data_nascimento')} ? has-error">
+					<div class="form-group  col-sm-2" th:classappend="${#fields.hasErrors('data_nascimento')} ? has-error">
 						<label for="dataNascimento">Data de nascimento</label>
-						<input type="text" class="form-control js-date" id="dataNascimento" th:field="*{data_nascimento}" autocomplete="off"></input>
+						<input type="text" class="form-control negritoBlue js-date" id="dataNascimento" th:field="*{data_nascimento}" autocomplete="off"></input>
 					</div>
 				</div>	
 					
 				<div class="row">
-					<div class= "col-sm-6 form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
+					<div class= "col-sm-4 form-group" th:classappend="${#fields.hasErrors('email')} ? has-error">
 						<label for="email" class="control-label">Email do usuário*</label>
-						<input id="email" type="text" class="form-control" th:field="*{email}"></input>
+						<input id="email" type="text" class="form-control negritoBlue" th:field="*{email}"></input>
 					</div>
 				</div>
 				
 				<div class="row">
 				
-					<div class= "col-sm-3 form-group" th:classappend="|${#fields.hasErrors('senha')} ? has-error ${usuario.novo} ? sc-required|">
+					<div class= "col-sm-2 form-group" th:classappend="|${#fields.hasErrors('senha')} ? has-error ${usuario.novo} ? sc-required|">
 						<label for="senha" class="control-label">senha do usuário</label>
-						<input id="senha" type="password" class="form-control" th:field="*{senha}"></input>
+						<input id="senha" type="password" class="form-control negritoBlue" th:field="*{senha}"></input>
 					</div>
 					
-					<div class= "col-sm-3 form-group" th:classappend="${#fields.hasErrors('confirmaSenha')} ? has-error">
+					<div class= "col-sm-2 form-group" th:classappend="${#fields.hasErrors('confirmaSenha')} ? has-error">
 						<label for="senhaConf" class="control-label">confirmar senha do usuário</label>
-						<input id="senhaConf" type="password" class="form-control" th:field="*{confirmaSenha}"></input>
+						<input id="senhaConf" type="password" class="form-control negritoBlue" th:field="*{confirmaSenha}"></input>
 					</div>
 				</div>
 			
@@ -98,7 +99,7 @@
 					<label class="control-label">Grupos</label> 
 					<div>
 						<th:block th:each="grupo : ${grupos}">
-	  						<div class="checkbox  checkbox-inline"> 
+	  						<div class="checkbox  checkbox-inline negritoBlue"> 
 		    					<input type="checkbox" th:value="${grupo.id_grupo}" th:field="*{grupos}"/>
 		    					<label th:for="${#ids.prev('grupos')}" th:text="${grupo.nome}">Administrador</label>
 	    					</div>
@@ -111,7 +112,7 @@
 				<div class="form-group  col-sm-3">
 					<label class="control-label">Status</label>
 					<div>
-						<input type="checkbox" class="js-status" data-size="small" data-off-color="danger" 
+						<input type="checkbox" class="js-status negritoBlue" data-size="small" data-off-color="danger" 
 							data-on-text="Ativo" data-off-text="Inativo" th:field="*{ativo}"/>
 					</div>
 				</div>
@@ -121,7 +122,7 @@
 				<br></br>
 				
 				<div class="form-group">
-					<button class="btn  btn-primary" type="submit">Salvar</button>
+					<button class="btn  btn-primary" type="submit">Salvar Usuário</button>
 				</div>
 		
 			</form>

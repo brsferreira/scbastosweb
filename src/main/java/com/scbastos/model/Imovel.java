@@ -99,6 +99,7 @@ public class Imovel implements Serializable{
 	@Size(max=150, message ="A descrição do imóvel não deve exceder 150 caracteres")
 	private String descricao;
 	
+	@NotBlank(message="Por favor, informe o proprietário do imóvel.")
 	@ManyToOne
 	@JoinColumn(name ="id_proprietario")
 	private Proprietario proprietario;

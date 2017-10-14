@@ -23,8 +23,22 @@ hr.style10 {
 	/* border-top: 1px dotted #8c8b8b;
 	border-bottom: 1px dotted #fff;
 	border-color: 1px solid aqua; */
-	
 }
+
+.negritoBlue{
+	font-weight: bold !important;
+	color: #0000a0 !important;
+}
+
+tr.negritoBlueTable{
+	font-weight: bold !important;
+	color: #0000a0 !important;
+}
+
+tr.negritoBlueTable:HOVER{
+	color: #008000 !important;
+}
+
 
 /*
 ######################
@@ -112,29 +126,24 @@ hr.style10 {
 
 .table-prop-col-nome {
 	width: 150px;
-	color: #000080;
 	
 }
 
 .table-prop-col-cpf {
 	width: 10px !important;
-	color: #000080;
 }
 
 .table-prop-col-telefone {
 	width: 10px !important;
-	color: #000080;
 }
 
 .table-prop-col-email {
 	width: 100px;
-	color: #000080;
 	/*text-align: right;*/
 }
 
 .table-prop-col-data {
 	width: 15px;
-	color: #000080;
 	/*text-align: right;*/
 }
 
@@ -147,39 +156,32 @@ hr.style10 {
 
 .table-imovel-col-tipo {
 	width: 50px;
-	color: #000080;
 	
 }
 
 .table-imovel-col-codigo {
 	width: 10px !important;
-	color: #000080;
 }
 
 .table-imovel-col-prop {
 	width: 170px !important;
-	color: #000080;
 }
 
 .table-imovel-col-bairro {
 	width: 100px;
-	color: #000080;
 	/*text-align: right;*/
 }
 
 .table-imovel-col-valor{
 	width: 50px;
-	color: #000080;
 }
 
 .table-imovel-col-status{
 	width: 50px;
-	color: #000080;
 }
 
 .table-imovel-col-data {
 	width: 40px;
-	color: #000080;
 	/*text-align: right;*/
 }
 

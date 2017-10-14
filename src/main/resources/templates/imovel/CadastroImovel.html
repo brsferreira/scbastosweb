@@ -37,10 +37,10 @@
  <div class="well-small">
  
 	 <div class="row"><!-- ----------------------------------------------------------------------------------------------- -->
-		<div class="form-group  col-sm-4  sc-required">
+		<div class="form-group  col-sm-4  sc-required" scbastos:classforerror="proprietario">
 			<label class="control-label" for="nomeCliente">Selecione o Proprietário</label>
 			<div class="input-group">
-		      <input id="nomeCliente" type="text" readonly="readonly" class="form-control" placeholder="Clique na lupa para pesquisar o cliente"/>
+		      <input id="nomeCliente" type="text" readonly="readonly" class="form-control negritoBlue" placeholder="Clique na lupa para pesquisar o Proprietário"/>
 		      <input id="codigoCliente" type="hidden" th:field="*{proprietario}"/>
 		      <span class="input-group-btn">
 		        <button class="btn  btn-default  js-tooltip" type="button" title="Pesquisa avançada"
@@ -63,7 +63,7 @@
 
 		<div class="col-sm-4  form-group" scbastos:classforerror="endereco.logradouro">
 			<label for="logradouro" class="control-label">Logradouro</label>
-			<input id="logradouro" type="text" class="form-control" th:field="*{endereco.logradouro}" />
+			<input id="logradouro" type="text" class="form-control negritoBlue" th:field="*{endereco.logradouro}" />
 		</div>
 		
 	</div>
@@ -72,12 +72,12 @@
 
 		<div class="col-sm-2 form-group" scbastos:classforerror="endereco.numero">
 			<label for="numeroImovel" class="control-label">Número do imóvel</label>
-			<input id="numeroImovel" type="text" class="form-control js-inteiro js-numeroImovel" th:field="*{endereco.numero}"></input>
+			<input id="numeroImovel" type="text" class="form-control js-inteiro js-numeroImovel negritoBlue" th:field="*{endereco.numero}"></input>
 		</div>
 						
 		<div class="col-sm-2  form-group" scbastos:classforerror="endereco.complemento">
 			<label for="complemento" class="control-label">Complemento</label>
-			<input id="complemento" type="text" class="form-control" th:field="*{endereco.complemento}" />
+			<input id="complemento" type="text" class="form-control negritoBlue" th:field="*{endereco.complemento}" />
 		</div>
 						
 	</div>	
@@ -86,20 +86,20 @@
 					
 		<div class="col-sm-2 form-group" scbastos:classforerror="endereco.cep">
 			<label for="cep" class="control-label">CEP</label> 
-			<input id="cep" type="text" class="form-control jsmask-cep" th:field="*{endereco.cep}"></input>
+			<input id="cep" type="text" class="form-control jsmask-cep negritoBlue" th:field="*{endereco.cep}"></input>
 		</div>
 
 		<div class="col-sm-2 form-group">
 			<label for="bairro">Bairro</label> 
-			<select id="bairro" class="form-control" th:field="*{endereco.bairro.id_bairro}">
-				<option th:each="bairros : ${bairros}" th:value="${bairros.id_bairro}" th:text="${bairros.nomeBairro}" 	class="form-control"/>
+			<select id="bairro" class="form-control negritoBlue" th:field="*{endereco.bairro.id_bairro}">
+				<option th:each="bairros : ${bairros}" th:value="${bairros.id_bairro}" th:text="${bairros.nomeBairro}"/>
 			</select>
 		</div>
 
 		<div class="col-sm-2 form-group">
 			<label for="municipio">Município</label> 
-			<select id="municipio" class="form-control" th:field="*{endereco.bairro.municipio.id_municipio}">
-				<option th:each="municipios : ${municipios}" th:value="${municipios.id_municipio}" th:text="${municipios.NomeMunicipio}" class="form-control"/>
+			<select id="municipio" class="form-control negritoBlue" th:field="*{endereco.bairro.municipio.id_municipio}">
+				<option th:each="municipios : ${municipios}" th:value="${municipios.id_municipio}" th:text="${municipios.NomeMunicipio}" class="form-control negritoBlue"/>
 			</select>
 		</div>
 		
@@ -115,16 +115,16 @@
 
 	<div class="col-sm-4" scbastos:classforerror="usuario">
 		<label for="nomecorretor" class="control-label">Nome do	corretor responsável</label>
-		<select id="nomecorretor" class="form-control" th:field="*{corretor}">
-			<option th:each="usuario : ${usuario}" th:value="${usuario.nome}" th:text="${usuario.getNome()}" class="form-control"/>
+		<select id="nomecorretor" class="form-control negritoBlue" th:field="*{corretor}">
+			<option th:each="usuario : ${usuario}" th:value="${usuario.nome}" th:text="${usuario.getNome()}"/>
 		</select>
 	</div>
 
-	<div class="col-sm-2  form-group" scbastos:classforerror="codigosc">
+	<div class="col-sm-2  form-group sc-required" scbastos:classforerror="codigosc">
 		<label for="codigosc" class="control-label">Código SC</label>
 		<div class="input-group">
 			<div class="input-group-addon">sc</div>
-			<input id="codigosc" type="text" class="form-control js-inteiro js-codigosc" th:field="*{codigosc}"/>
+			<input id="codigosc" type="text" class="form-control js-inteiro js-codigosc negritoBlue" th:field="*{codigosc}"/>
 		</div>
 	</div>
 	
@@ -134,21 +134,21 @@
 						
 	<div class="col-sm-2  form-group" scbastos:classforerror="tipoImovel">
 		<label for="tipo_imovel" class="control-label">Tipo do imóvel</label> 
-		<select id="tipo_imovel" class="form-control" th:field="*{tipoImovel}">
+		<select id="tipo_imovel" class="form-control negritoBlue" th:field="*{tipoImovel}">
 			<option th:each="tipoImovel : ${tipoImoveis}" th:value="${tipoImovel}" th:text="${tipoImovel.descricao}"/>
 		</select>
 	</div>
 	
 	<div class="col-sm-2  form-group" scbastos:classforerror="destinacao">
 		<label for="destinacao" class="destinacao">Destinação</label> 
-		<select id="destinacao" class="form-control" th:field="*{destinacao}">
+		<select id="destinacao" class="form-control negritoBlue" th:field="*{destinacao}">
 			<option th:each="destinacao : ${destinacoes}" th:value="${destinacao}" th:text="${destinacao.getEnum_destinacao()}"/>
 		</select>
 	</div>
 	
 	<div class="col-sm-2  form-group" scbastos:classforerror="situacao">
 		<label for="situacao" class="control-label">Situação</label> 
-		<select	id="situacao" class="form-control" th:field="*{situacao}">
+		<select	id="situacao" class="form-control negritoBlue" th:field="*{situacao}">
 			<option th:each="situacao : ${situacoes}" th:value="${situacao}" th:text="${situacao.descricao}"/>
 		</select>
 	</div>
@@ -159,19 +159,19 @@
 
 	<div class="col-sm-2  form-group" scbastos:classforerror="classificacao">
 		<label for="classificacao" class="control-label">Classificacao</label>
-		<select id="classificacao" class="form-control" th:field="*{classificacao}">
+		<select id="classificacao" class="form-control negritoBlue" th:field="*{classificacao}">
 			<option th:each="classificacao : ${classificacoes}" th:value="${classificacao}"	th:text="${classificacao.enum_classificacao}"/>
 		</select>
 	</div>
 	
-	<div class="col-sm-2 form-group" scbastos:classforerror="dataCaptacao">
+	<div class="col-sm-2 form-group sc-required" scbastos:classforerror="dataCaptacao">
 		<label for="data_captacao control-label">Data de Captação</label> 
-		<input id="data_captacao" type="text" class="form-control js-date" th:field="*{dataCaptacao}" autocomplete="off">
+		<input id="data_captacao" type="text" class="form-control js-date negritoBlue" th:field="*{dataCaptacao}" autocomplete="off">
 	</div>
 	
 	<div class="col-sm-2  form-group" scbastos:classforerror="conservacao">
 		<label for="conservacao" class="control-label">Conservação</label>
-		<select id="conservacao" class="form-control" th:field="*{conservacao}">
+		<select id="conservacao" class="form-control negritoBlue" th:field="*{conservacao}">
 			<option th:each="conservacao : ${conservacao}" th:value="${conservacao}" th:text="${conservacao.getEnum_conservacao()}"/>
 		</select>
 	</div>
@@ -179,21 +179,21 @@
 
 <div class="row"><!-- -------------------------------------------------------------------------------------------------->
 
-	<div class="col-sm-2 form-group" scbastos:classforerror="matricula">
+	<div class="col-sm-2 form-group sc-required" scbastos:classforerror="matricula">
 		<label for="matricula" class="control-label">Matrícula</label> 
-		<input id="matricula" type="text" class=" control-label form-control js-inteiro js-matriculaImovel" th:field="*{matricula}">
+		<input id="matricula" type="text" class=" control-label form-control js-inteiro js-matriculaImovel negritoBlue" th:field="*{matricula}">
 	</div>
 
-	<div class="col-sm-2 form-group" scbastos:classforerror="inscricaoImobiliaria">
+	<div class="col-sm-2 form-group sc-required" scbastos:classforerror="inscricaoImobiliaria">
 		<label for="inscricao" class="control-label">Inscrição imobiliária</label> 
-		<input id="inscricao" type="text" class=" control-label form-control js-inteiro js-inscImovel" th:field="*{inscricaoImobiliaria}"/>
+		<input id="inscricao" type="text" class=" control-label form-control js-inteiro js-inscImovel negritoBlue" th:field="*{inscricaoImobiliaria}"/>
 	</div>
 
 	<div class="col-sm-2 form-group"
 		scbastos:classforerror="idadeImovel">
 		<label for="idade_imovel" class="control-label">idade do imóvel</label>
 		<div class="input-group">
-			<input id="idade_imovel" type="text" class="form-control js-inteiro js-idadeImovel" th:field="*{idadeImovel}"/>
+			<input id="idade_imovel" type="text" class="form-control js-inteiro js-idadeImovel negritoBlue" th:field="*{idadeImovel}"/>
 			<div class="input-group-addon">anos</div>
 		</div>
 	</div>
@@ -205,7 +205,7 @@
 	<div class="col-sm-2 form-group" scbastos:classforerror="garagem">
 		<label for="garagem" class="control-label">Garagem</label>
 		<div class="input-group">
-			<input id="garagem" type="text" class="form-control js-inteiro js-garagem" th:field="*{garagem}"/>
+			<input id="garagem" type="text" class="form-control js-inteiro js-garagem negritoBlue" th:field="*{garagem}"/>
 			<div class="input-group-addon">vagas</div>
 		</div>
 	</div>
@@ -213,7 +213,7 @@
 	<div class="col-sm-2 form-group" scbastos:classforerror="areaTotal">
 		<label for="area_total" class="control-label">Área total</label>
 		<div class="input-group">
-			<input id="area_total" type="text" class="form-control js-decimal js-areaTotal" th:field="*{areaTotal}"/>
+			<input id="area_total" type="text" class="form-control js-decimal js-areaTotal negritoBlue" th:field="*{areaTotal}"/>
 			<div class="input-group-addon">M²</div>
 		</div>
 	</div>
@@ -226,8 +226,8 @@
 		<label for="status" class="control-label">Status do	Imóvel</label>
 		<div>
 			<th:block th:each="status : ${statusImovel}">
-				<div class="radio radio-inline">
-					<input th:id="|id_${status}|" type="radio" th:value="${status}" th:field="*{status}" />
+				<div class="radio radio-inline negritoBlue">
+					<input th:id="|id_${status}|" type="radio" th:value="${status}" th:field="*{status}"/>
 					<label th:for="|id_${status}|" th:text="${status.descricao}">Ativo</label>
 				</div>
 			</th:block>
@@ -239,7 +239,7 @@
 		<label for="status" class="control-label">Exclusividade do Imóvel</label>
 		<div>
 			<th:block th:each="exclusividade : ${exclusividadeImovel}">
-				<div class="radio radio-inline">
+				<div class="radio radio-inline negritoBlue">
 					<input th:id="|id_${exclusividade}|" type="radio" th:value="${exclusividade}" th:field="*{exclusividade_imovel}" />
 					<label th:for="|id_${exclusividade}|" th:text="${exclusividade.getImovel_exclusividade()}">Exclusividade</label>
 				</div>
@@ -253,7 +253,7 @@
 	
 	<div class="col-lg-6  col-sm-6" scbastos:classforerror="descricao">
 		<label for="descricao" class="control-label">Descrição do Imóvel</label> 
-		<input id="descricao" type="text" class="form-control" th:field="*{descricao}"/>
+		<input id="descricao" type="text" class="form-control negritoBlue" th:field="*{descricao}"/>
 	</div>
 	
 </div><br>
@@ -284,7 +284,7 @@
 	
 	<div class="col-sm-2  form-group">
 		<label for="organizacaoFinanceira" class="control-label">Organização Financeira</label>
-		<select id="organizacaoFinanceira" class="form-control" th:field="*{valor.OrgFinanceira}">
+		<select id="organizacaoFinanceira" class="form-control negritoBlue" th:field="*{valor.OrgFinanceira}">
 			<option th:each="OrgFinanceira : ${OrgFinanceira}" th:value="${OrgFinanceira}" th:text="${OrgFinanceira.descricao}"/>
 		</select>
 	</div>
@@ -297,14 +297,14 @@
 		<label for="valorimovel" class="control-label">Valor do	imóvel</label>
 		<div class="input-group">
 			<div class="input-group-addon">R$</div>
-			<input id="valodescobririmovel" type="text"	class="form-control js-decimal js-valorImovel" th:field="*{valor.valorImovel}"/>
+			<input id="valodescobririmovel" type="text"	class="form-control negritoBlue js-decimal js-valorImovel" th:field="*{valor.valorImovel}"/>
 		</div>
 	</div>
 	
 	<div class="col-sm-2 form-group"th:classappend="${#fields.hasErrors('valor.prazoFinanciamento')} ? has-error">
 		<label for="prazo" class="control-label">Prazo Financiamento</label>
 		<div class="input-group">
-			<input id="prazo" type="text" class="form-control js-inteiro js-prazo" th:field="*{valor.prazoFinanciamento}"/>
+			<input id="prazo" type="text" class="form-control negritoBlue js-inteiro js-prazo" th:field="*{valor.prazoFinanciamento}"/>
 			<div class="input-group-addon">anos</div>
 		</div>
 	</div>
@@ -317,13 +317,13 @@
 		<label for="sinal" class="control-label">Sinal</label>
 		<div class="input-group">
 			<div class="input-group-addon">R$</div>
-			<input id="sinal" type="text" class="form-control js-decimal js-valorImovel" th:field="*{valor.sinal}"/>
+			<input id="sinal" type="text" class="form-control negritoBlue js-decimal js-valorImovel" th:field="*{valor.sinal}"/>
 		</div>
 	</div>
 	
 	<div class="col-lg-2  col-sm-6">
 		<label for="quitado" class="control-label">Imóvel Quitado?</label> 
-		<select id="quitado" class="form-control" th:field="*{valor.quitado}">
+		<select id="quitado" class="form-control negritoBlue" th:field="*{valor.quitado}">
 			<option value="" selected="selected">Selecione</option>
 			<option	th:each="segmento : ${T(com.scbastos.model.Enumerators.EnumImovelQuitado).values()}"
 				th:value="${segmento}" th:text="${segmento.imovel_quitacao}"></option>

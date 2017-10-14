@@ -79,12 +79,12 @@
 					</thead>
 					
 					<tbody><!-- imoveis é o repositorio de imoveis (JpaRepository<Imovel, Long>, ImoveisQueries) -->
-						<tr th:each="imoveis : ${imoveis}">
+						<tr class="negritoBlueTable" th:each="imoveis : ${imoveis}">
 							<td th:text="${imoveis.tipoImovel}"></td>						
-							<td style="font-weight: bold" th:text="|sc ${imoveis.codigosc}|"></td>						
+							<td th:text="|sc ${imoveis.codigosc}|"></td>						
 							<td th:text="${imoveis.proprietario.getNome()}"></td>	
 							<td th:text="${imoveis.endereco.bairro.getNomeBairro()}"></td>
-							<td style="font-weight: bold" th:text="|R$ ${#numbers.formatDecimal(imoveis.valor.getValorImovel(),3,'POINT',2,'COMMA')}|"></td>
+							<td th:text="|R$ ${#numbers.formatDecimal(imoveis.valor.getValorImovel(),3,'POINT',2,'COMMA')}|"></td>
 							<td th:text="${imoveis.situacao.descricao}"></td>
 							<td th:text="${imoveis.status.descricao}"></td>
 							<td th:text="${#temporals.format(imoveis.dataCaptacao,'dd/MM/yyyy')}"></td>			 
