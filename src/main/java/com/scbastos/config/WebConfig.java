@@ -39,6 +39,7 @@ import com.google.common.cache.CacheBuilder;
 import com.scbastos.controller.ProprietarioController;
 import com.scbastos.controller.converter.BairroConverter;
 import com.scbastos.controller.converter.GrupoConverter;
+import com.scbastos.controller.converter.ProprietarioConverter;
 import com.scbastos.controller.converter.UsuarioConverter;
 import com.scbastos.thymeleaf.ScBastosDialect;
 
@@ -103,6 +104,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		conversionService.addConverter(new BairroConverter());
 		conversionService.addConverter(new UsuarioConverter());
 		conversionService.addConverter(new GrupoConverter());
+		conversionService.addConverter(new ProprietarioConverter());
 		
 		NumberStyleFormatter bigDecimalFormatter = new NumberStyleFormatter("#,##0.00");
 		conversionService.addFormatterForFieldType(BigDecimal.class, bigDecimalFormatter);
