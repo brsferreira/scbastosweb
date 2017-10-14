@@ -83,7 +83,7 @@ public class Imovel implements Serializable{
 	private LocalDate dataCaptacao;
 	
 	@Column(name="data_cadastro")
-	private LocalDateTime dataCadastro = LocalDateTime.now();
+	private LocalDateTime dataCadastro;
 	
 	@Digits(integer=7, fraction=2, message ="O valor máximo é 1.000.000,00m²")
 	@Column(name="area_total")
@@ -140,6 +140,12 @@ public class Imovel implements Serializable{
 	@NotNull(message="Por favor, informe a exlusividade do imóvel")
 	@Enumerated(EnumType.STRING)
 	private EnumExclusividadeImovel exclusividade_imovel = EnumExclusividadeImovel.NAO;
+	
+	//VERIFICAR SE O IMOVEL É UM NOVO CADASTRO
+	
+	public boolean isNovo(){
+		return id_imovel == null;
+	}
 	
 	
 	//GETTERS AND SETTERS ---------------------------------------------------------------------------

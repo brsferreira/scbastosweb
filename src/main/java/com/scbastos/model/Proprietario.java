@@ -43,11 +43,18 @@ public class Proprietario implements Serializable{
 	@NotBlank(message = "Por favor, informe o CPF do proprietario.")
 	private String cpf;
 	
-	private LocalDateTime data_cadastro = LocalDateTime.now();
+	private LocalDateTime data_cadastro;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "proprietario")
 	private List<Imovel> imoveis;
+	
+	// PROPRIETARIO NOVO -------
+	
+	public boolean isNovo(){
+		return id_proprietario == null;
+		
+	}
 	
 	
 	//GETTERS AND SETTERS -------------------------------------------------
@@ -89,7 +96,7 @@ public class Proprietario implements Serializable{
 	}
 
 	public void setCpf(String cpf) {
-		this.cpf = cpf;                    /*cpf.replaceAll("\\.|-", "");*/
+		this.cpf = cpf;                   
 	}
 
 	public String getData_cadastro() {

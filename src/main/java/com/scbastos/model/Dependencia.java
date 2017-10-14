@@ -65,22 +65,4 @@ public class Dependencia {
 		this.altura = altura;
 	}
 	
-
-	
-	
-	
-	// HASHCODE AND EQUALS ------------------------------------------------------------------------------------
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

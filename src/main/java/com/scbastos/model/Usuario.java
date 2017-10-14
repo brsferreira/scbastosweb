@@ -61,7 +61,7 @@ public class Usuario implements Serializable {
 	@JoinTable(name = "usuario_grupo",joinColumns=@JoinColumn(name="id_usuario"), inverseJoinColumns = @JoinColumn(name="id_grupo"))
 	private List<Grupo> grupos;
 	
-	private LocalDateTime data_cadastro = LocalDateTime.now();
+	private LocalDateTime data_cadastro;
 	
 	private LocalDate data_nascimento;
 	

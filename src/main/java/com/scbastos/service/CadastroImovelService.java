@@ -1,5 +1,6 @@
 package com.scbastos.service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class CadastroImovelService {
 	
 	@Transactional
 	public void salvarImovel(Imovel imovel){
+		
+		if(imovel.isNovo()){
+			imovel.setDataCadastro(LocalDateTime.now());
+		}
 		
 		Optional<Imovel> imovelSC = imoveis.findByCodigosc(imovel.getCodigosc());
 		if(imovelSC.isPresent()){

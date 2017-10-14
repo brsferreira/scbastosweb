@@ -1,5 +1,6 @@
 package com.scbastos.service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class CadastroUsuarioService {
 	@Transactional
 	public void salvarUsuario(Usuario usuario){
 		
+		if(usuario.isNovo()){
+			usuario.setData_cadastro(LocalDateTime.now());
+		}
 			
 		Optional<Usuario> usuarioCpf = usuarios.findByCpf(usuario.getCpf());
 		if(usuarioCpf.isPresent()){

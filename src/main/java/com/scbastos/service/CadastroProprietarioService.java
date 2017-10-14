@@ -1,5 +1,6 @@
 package com.scbastos.service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class CadastroProprietarioService {
 	
 	@Transactional
 	public void salvarProprietario(Proprietario proprietario){
+		
+		if(proprietario.isNovo()){
+			proprietario.setData_cadastro(LocalDateTime.now());
+		}
 		
 		Optional<Proprietario> proprietarioCpf = proprietarios.findByCpf(proprietario.getCpf());
 		if(proprietarioCpf.isPresent()){
