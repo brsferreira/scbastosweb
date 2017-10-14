@@ -3,8 +3,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.scbastos</groupId>
-	<artifactId>scbastosweb</artifactId>
+	<groupId>com.scbastos</groupId><!-- groupId will identify your project uniquely across all projects -->
+	<artifactId>scbastosweb</artifactId><!-- artifactId is the name of the jar without version -->
 	<version>1.0.0-SNAPSHOT</version>
 
 	<packaging>war</packaging>

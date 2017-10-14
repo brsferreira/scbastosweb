@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,7 +44,7 @@ public class Proprietario implements Serializable{
 	
 	private LocalDateTime data_cadastro = LocalDateTime.now();
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "proprietario")
+	@OneToMany(mappedBy = "proprietario")
 	private List<Imovel> imoveis;
 	
 	

@@ -85,7 +85,7 @@ public class Imovel implements Serializable{
 	@Column(name="data_cadastro")
 	private LocalDateTime dataCadastro = LocalDateTime.now();
 	
-	//@DecimalMax(value = "1.000.000,00", message ="O valor máximo é 1.000.000,00m²")
+	@Digits(integer=7, fraction=2, message ="O valor máximo é 1.000.000,00m²")
 	@Column(name="area_total")
 	private BigDecimal areaTotal;
 	
@@ -96,6 +96,7 @@ public class Imovel implements Serializable{
 	@NotBlank(message="Por favor, informe o corretor responsável.")
 	private String corretor;
 	
+	@Size(max=150, message ="A descrição do imóvel não deve exceder 150 caracteres")
 	private String descricao;
 	
 	@ManyToOne(cascade= {CascadeType.PERSIST,  CascadeType.MERGE})

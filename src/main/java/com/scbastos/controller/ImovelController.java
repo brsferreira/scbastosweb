@@ -1,32 +1,23 @@
 package com.scbastos.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.scbastos.exceptions.CpfExcepetion;
 import com.scbastos.exceptions.ImovelCodigoSCExpetion;
 import com.scbastos.exceptions.InscricaoException;
 import com.scbastos.exceptions.MatriculaException;
 import com.scbastos.model.Dependencia;
 import com.scbastos.model.Imovel;
-import com.scbastos.model.Proprietario;
 import com.scbastos.model.Enumerators.EnumClassificacao;
 import com.scbastos.model.Enumerators.EnumConservacao;
 import com.scbastos.model.Enumerators.EnumDependencias;
@@ -110,7 +101,7 @@ public class ImovelController {
 
 	 		cadastroImovelService.salvarImovel(imovel);
 			
-	} catch (ImovelCodigoSCExpetion sc) {
+	} catch (ImovelCodigoSCExpetion sc){
 			result.rejectValue("codigosc",sc.getMessage(), sc.getMessage());
 			return novo(imovel);
 			
@@ -118,40 +109,17 @@ public class ImovelController {
 			result.rejectValue("matricula",mat.getMessage(), mat.getMessage());
 			return novo(imovel);
 			
-	} catch (InscricaoException i) {
+	} catch (InscricaoException i){
 			result.rejectValue("inscricaoImobiliaria",i.getMessage(), i.getMessage());
 			return novo(imovel);
-			
-	} catch (CpfExcepetion e) {
-			result.rejectValue("cpf",e.getMessage(), e.getMessage());
-			return novo(imovel);
-	
-	}
+	} 
 			
 		
 		atributes.addFlashAttribute("mensagem", "Imovel cadastrado com sucesso");
 		return new ModelAndView("redirect:/imovel/novo");
-		
 	}
 	
-	
-	@RequestMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public @ResponseBody List<Proprietario> pesquisar(String nome) {
-		validarTamanhoNome(nome);
-		return proprietarios.findByNomeStartingWithIgnoreCase(nome);
-	}
-
-	private void validarTamanhoNome(String nome) {
-		if (StringUtils.isEmpty(nome) || nome.length() < 3) {
-			throw new IllegalArgumentException();
-		}
-	}
-	
-	@ExceptionHandler(IllegalArgumentException.class)
-	public ResponseEntity<Void> tratarIllegalArgumentException(IllegalArgumentException e) {
-		return ResponseEntity.badRequest().build();
-	}
-	
+	// PESQUISA DE IMOVEIS----------------------------------------------------------
 	@GetMapping
 	public ModelAndView pesquisar(ImovelFilter imovelFilter, BindingResult result) {
 		

@@ -29,6 +29,24 @@
 
 				<th:block th:include="fragments/MensagemSucesso"></th:block>
 				<th:block th:include="fragments/MensagensErroValidacao"></th:block>
+				
+				
+<!-- TESTE DO MODAL DE PESQUISA DO PROPRIETARIO --------------------------------------------------------------------------------------------------->	
+
+<div class="row"><!-- ----------------------------------------------------------------------------------------------- -->
+	<div class="form-group  col-sm-4  sc-required">
+		<label class="control-label" for="nomeCliente">Cliente</label>
+		<div class="input-group">
+	      <input id="nomeCliente" type="text" readonly="readonly" class="form-control" placeholder="Clique na lupa para pesquisar o cliente"/>
+	      <span class="input-group-btn">
+	        <button class="btn  btn-default  js-tooltip" type="button" title="Pesquisa avançada"
+	        		data-toggle="modal" data-target="#pesquisaRapidaClientes" >
+	        	<i class="glyphicon  glyphicon-search"></i>
+	        </button>
+	      </span>
+	    </div>
+	</div>	
+</div>
 
 <!-- PROPRIETARIO  -------------------------------------------------------------------------------------------------------------------------------->
 
@@ -419,6 +437,7 @@
 		</div>
 
 		<th:block th:replace="handlebars/fotoImovel"></th:block>
+		<th:block th:replace="proprietario/PesquisaRapidaClientes :: pesquisaRapidaClientes"></th:block>
 
 	</section>
 
