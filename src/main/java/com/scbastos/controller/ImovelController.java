@@ -113,7 +113,6 @@ public class ImovelController {
 			result.rejectValue("inscricaoImobiliaria",i.getMessage(), i.getMessage());
 			return novo(imovel);
 	} 
-			
 		
 		atributes.addFlashAttribute("mensagem", "Imovel cadastrado com sucesso");
 		return new ModelAndView("redirect:/imovel/novo");

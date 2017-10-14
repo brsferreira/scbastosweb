@@ -15,6 +15,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.scbastos.validation.Nome;
 
 @SessionScope
@@ -44,6 +45,7 @@ public class Proprietario implements Serializable{
 	
 	private LocalDateTime data_cadastro = LocalDateTime.now();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "proprietario")
 	private List<Imovel> imoveis;
 	
@@ -63,7 +65,7 @@ public class Proprietario implements Serializable{
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.trim();
 	}
 
 	public String getTelefone() {

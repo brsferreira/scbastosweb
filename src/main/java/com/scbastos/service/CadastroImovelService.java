@@ -37,11 +37,6 @@ public class CadastroImovelService {
 			throw new InscricaoException("Detectamos um imóvel com a mesma Inscrição imobiliária.");
 		}
 		
-/*		List<Imovel> PropCpf = imoveis.cpfs(imovel);
-		if(!PropCpf.isEmpty()){
-			throw new CpfExcepetion("O cpf informado já existe na base de dados.");
-		}*/
-		
 		imoveis.save(imovel);
 
 	}

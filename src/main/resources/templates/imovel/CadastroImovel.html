@@ -38,6 +38,7 @@
 		<label class="control-label" for="nomeCliente">Cliente</label>
 		<div class="input-group">
 	      <input id="nomeCliente" type="text" readonly="readonly" class="form-control" placeholder="Clique na lupa para pesquisar o cliente"/>
+	      <input id="codigoCliente" type="hidden"/>
 	      <span class="input-group-btn">
 	        <button class="btn  btn-default  js-tooltip" type="button" title="Pesquisa avançada"
 	        		data-toggle="modal" data-target="#pesquisaRapidaClientes" >
@@ -446,8 +447,8 @@
 		<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
 		<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
 		<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
-		<script th:src="@{/javascripts/vendors/handlebars.min.js}"></script>
 		<script th:src="@{/javascripts/imovel.upload-foto.js}"></script>
+		<script th:src="@{/javascripts/cliente.pesquisa-rapida.js}"></script>
 
 	</th:block>
 
