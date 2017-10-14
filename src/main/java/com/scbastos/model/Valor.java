@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.web.context.annotation.SessionScope;
 
 import com.scbastos.model.Enumerators.EnumImovelQuitado;
-import com.scbastos.validation.Nome;
+import com.scbastos.model.Enumerators.EnumOrganizacaoFinanceira;
 
 @SessionScope
 @Entity
@@ -53,9 +53,10 @@ public class Valor implements Serializable{
 	@Column(name = "saldo_devedor")
 	private BigDecimal saldoDevedor;
 	
-	@Nome
+	
 	@Column(name ="org_financeira")
-	private String OrgFinanceira;
+	@Enumerated(EnumType.STRING)
+	private EnumOrganizacaoFinanceira OrgFinanceira;
 	
 	@NotNull(message = "Por favor, especifique a se o imóvel está quitado ou não")
 	@Enumerated(EnumType.STRING)
@@ -108,11 +109,11 @@ public class Valor implements Serializable{
 		this.saldoDevedor = saldoDevedor; 
 				//(valorImovel.subtract(sinal));
 	}
-	public String getOrgFinanceira() {
+	public EnumOrganizacaoFinanceira getOrgFinanceira() {
 		return OrgFinanceira;
 	}
 
-	public void setOrgFinanceira(String orgFinanceira) {
+	public void setOrgFinanceira(EnumOrganizacaoFinanceira orgFinanceira) {
 		OrgFinanceira = orgFinanceira;
 	}
 	

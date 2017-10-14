@@ -281,11 +281,14 @@
 
 
 <div class="row"><!-- -------------------------------------------------------------------------------------------------->
-
-	<div class="col-sm-4 form-group" th:classappend="${#fields.hasErrors('valor.OrgFinanceira')} ? has-error">
-		<label for="organizacaoFinanceira" class="control-label">Organização Financeira</label> <input id="organizacaoFinanceira" 
-			type="text" class="form-control" th:field="*{valor.OrgFinanceira}"/>
+	
+	<div class="col-sm-2  form-group">
+		<label for="organizacaoFinanceira" class="control-label">Organização Financeira</label>
+		<select id="organizacaoFinanceira" class="form-control" th:field="*{valor.OrgFinanceira}">
+			<option th:each="OrgFinanceira : ${OrgFinanceira}" th:value="${OrgFinanceira}" th:text="${OrgFinanceira.descricao}"/>
+		</select>
 	</div>
+	
 </div>
 
 <div class="row"><!-- -------------------------------------------------------------------------------------------------->	

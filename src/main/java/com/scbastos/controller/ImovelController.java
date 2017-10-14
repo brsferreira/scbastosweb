@@ -23,6 +23,7 @@ import com.scbastos.model.Enumerators.EnumConservacao;
 import com.scbastos.model.Enumerators.EnumDependencias;
 import com.scbastos.model.Enumerators.EnumDestinacao;
 import com.scbastos.model.Enumerators.EnumExclusividadeImovel;
+import com.scbastos.model.Enumerators.EnumOrganizacaoFinanceira;
 import com.scbastos.model.Enumerators.EnumSituacao;
 import com.scbastos.model.Enumerators.EnumStatusImovel;
 import com.scbastos.model.Enumerators.EnumTipoImovel;
@@ -51,9 +52,6 @@ public class ImovelController {
 	private Imoveis imoveis;
 	
 	@Autowired
-	private Proprietarios proprietarios;
-	
-	@Autowired
 	private Usuarios usuariosRepository;
 	
 	@Autowired
@@ -79,6 +77,7 @@ public class ImovelController {
 		mv.addObject("municipios",municipiosRepository.findAll());
 		mv.addObject("dependencias",EnumDependencias.values());
 		mv.addObject("dependencia",Dependencia.class);
+		mv.addObject("OrgFinanceira", EnumOrganizacaoFinanceira.values());
 		
 		return mv;
 	}
