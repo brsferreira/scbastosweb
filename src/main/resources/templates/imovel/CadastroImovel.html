@@ -29,62 +29,27 @@
 
 				<th:block th:include="fragments/MensagemSucesso"></th:block>
 				<th:block th:include="fragments/MensagensErroValidacao"></th:block>
-				
-				
-<!-- TESTE DO MODAL DE PESQUISA DO PROPRIETARIO --------------------------------------------------------------------------------------------------->	
-
-<div class="row"><!-- ----------------------------------------------------------------------------------------------- -->
-	<div class="form-group  col-sm-4  sc-required">
-		<label class="control-label" for="nomeCliente">Cliente</label>
-		<div class="input-group">
-	      <input id="nomeCliente" type="text" readonly="readonly" class="form-control" placeholder="Clique na lupa para pesquisar o cliente"/>
-	      <input id="codigoCliente" type="hidden"/>
-	      <span class="input-group-btn">
-	        <button class="btn  btn-default  js-tooltip" type="button" title="Pesquisa avançada"
-	        		data-toggle="modal" data-target="#pesquisaRapidaClientes" >
-	        	<i class="glyphicon  glyphicon-search"></i>
-	        </button>
-	      </span>
-	    </div>
-	</div>	
-</div>
 
 <!-- PROPRIETARIO  -------------------------------------------------------------------------------------------------------------------------------->
 
 <h4 style="color: blue">Informações do proprietário</h4>
 
  <div class="well-small">
-	
-	<div class="row"><!-- ------------------------------------------------------------------------------------------------->
-	
-		<div class="col-sm-4  form-group"
-			scbastos:classforerror="proprietario.nome">
-			<label for="nome" class="control-label">Nome completo do proprietario</label> 
-			<input id="nome" type="text" class="form-control" th:field="*{proprietario.nome}"/>
-		</div>
-
-	</div>
-
-	<div class="row"><!-- ------------------------------------------------------------------------------------------------->
-	
-		<div class="col-sm-2 form-group" scbastos:classforerror="proprietario.cpf">
-			<label for="cpf_prop" class="control-label">cpf do proprietário</label> 
-			<input id="cpf_prop" type="text" class="form-control jsmask-cpf" th:field="*{proprietario.cpf}" autocomplete="off"></input>
-		</div>
-
-		<div class="col-sm-2 form-group" scbastos:classforerror="proprietario.telefone">
-			<label for="tel_1" class="control-label">Telefone</label> 
-			<input id="tel_1" type="text" class="form-control js-phone-number" th:field="*{proprietario.telefone}" autocomplete="off"/>
-		</div>
-		
-	</div>
-		
-	<div class="row"><!-- ------------------------------------------------------------------------------------------------->
-		
-		 <div class="col-sm-4 form-group" scbastos:classforerror="proprietario.email">
-			<label for="email" class="control-label">Email do proprietário</label> 
-			<input id="text" type="text" class="form-control" th:field="*{proprietario.email}"/>
-		</div>
+ 
+	 <div class="row"><!-- ----------------------------------------------------------------------------------------------- -->
+		<div class="form-group  col-sm-4  sc-required">
+			<label class="control-label" for="nomeCliente">Selecione o Proprietário</label>
+			<div class="input-group">
+		      <input id="nomeCliente" type="text" readonly="readonly" class="form-control" placeholder="Clique na lupa para pesquisar o cliente"/>
+		      <input id="codigoCliente" type="hidden"/>
+		      <span class="input-group-btn">
+		        <button class="btn  btn-default  js-tooltip" type="button" title="Pesquisa avançada"
+		        		data-toggle="modal" data-target="#pesquisaRapidaClientes" >
+		        	<i class="glyphicon  glyphicon-search"></i>
+		        </button>
+		      </span>
+		    </div>
+		</div>	
 	</div>
 </div>
 
